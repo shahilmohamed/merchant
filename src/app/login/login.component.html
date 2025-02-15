@@ -1,0 +1,63 @@
+<div class="container ">
+    <div class="row">
+        <div class="col">
+
+            <div class="loginform">
+
+                <div class="main-div">
+
+                    <div class="panel">
+                        <h1>Login</h1>
+                        <hr>
+                        <p class="text-success" style="font-weight: bold;">
+                            Please enter your email and password
+                        </p>
+                        <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+                            <div class="column">
+                                <!-- Email -->
+                                <div class="form-group">
+
+                                    <div class="input-group-prepared">
+                                        <span ngMogel class="input-group-text" style="font-size: 25px; color: rgba(0, 0, 0, 0.467);">
+                                            <i class="fa fa-user"> Email</i>
+                                        </span>
+                                        <input ngModel #email="ngModel" type="email" name="email" id="loginmailid"
+                                            class="form-control" [pattern]="email_pattern" required>
+                                        <div class="alert alert-danger" *ngIf="email.touched && !email.valid">*Enter
+                                            email
+                                            <div *ngIf="email.errors?.pattern">**Enter valid email id</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Password -->
+                                <div class="form-group">
+                                    <div class="input-group-prepared">
+                                        <span class="input-group-text" style="font-size: 25px; color: rgba(0, 0, 0, 0.467);">
+                                            <i class="fa fa-lock"> Password</i>
+                                        </span>
+                                        <input ngModel #password="ngModel" type="password" name="password"
+                                            id="loginpassword" class="form-control" [pattern]="password_pattern"
+                                            required>
+                                        <div class="alert alert-danger" *ngIf="password.touched && !password.valid">
+                                            *Enter password
+                                            <div *ngIf="password.errors?.pattern">**Enter valid password</div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <br>
+                                <button class="btn btn-outline-success" [disabled]="!f.valid">Login</button>
+                                <br>
+                                <span style="color: red;font-weight: bold;margin-top: 5px;">
+                                    {{msg}}
+                                </span>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

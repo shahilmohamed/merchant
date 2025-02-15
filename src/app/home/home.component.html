@@ -1,0 +1,48 @@
+<div class="container-fluid">
+    <app-header></app-header>
+    <br>
+    <div>
+        <button class="btn btn-success" routerLink="/addprod">Add product</button>
+        <button class="btn btn-primary" (click)="onUpdate(popUp)">Update product</button>
+        <button class="btn btn-danger"(click)="onDelete()">Delete product</button>
+    </div>
+    <br>
+    <ng-template #popUp>
+        <app-update-product [ParentData]="productObj"></app-update-product>
+        <button (click)="modalRef.hide()" class="btn btn-danger">Cancel</button>
+    </ng-template>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <th>#</th>
+                <th>action</th>
+                <th>Brand</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Stock</th>
+                <th>Availability</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of productData | paginate:{itemsPerPage: 5, currentPage: p };index as i">
+                    <td>{{i+1}}</td>
+                    <td><input type="radio" name="record"(click)="onRadioclick(item)"></td>
+                    <td><a [routerLink]="['/details',item.id]">{{item.brand | titlecase}}</a></td>
+                    <td>{{item.category}}</td>
+                    <td>{{item.price}}</td>
+                    <td>{{item.stock}}</td>
+                    <td *ngIf="item.stock>10">
+                        <h5><span class="badge badge-pill badge-success">In stock</span></h5>
+                    </td>
+                    <td *ngIf="item.stock<=10">
+                        <h5><span class="badge badge-pill badge-warning">In stock</span></h5>
+                    </td>
+                    <td *ngIf="item.stock<=0">
+                        <h5><span class="badge badge-pill badge-danger">Out of stock</span></h5>
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+        <pagination-controls (pageChange)="p = $event" style="float: right;"></pagination-controls>
+    </div>
+</div>

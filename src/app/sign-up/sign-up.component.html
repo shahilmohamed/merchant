@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignUp</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <h1 class="text-center text-white bg-info">Create a new account</h1>
+            <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+                <div class="col">
+                    <!-- Id -->
+                    <div class="form-group">
+                        <label for="">User Id</label>
+                        <input ngModel #userid="ngModel" type="text" id="signupuserid" class="form-control" name="userid" required>
+                        <div class="alert alert-danger" *ngIf="userid.touched && !userid.valid">*Enter user id</div>
+                    </div>
+                    <!-- First name -->
+                    <div class="form-group">
+                        <label for="">First name</label>
+                        <input ngModel #fname="ngModel" type="text" id="signupfname" class="form-control" name="fname" required>
+                        <div class="alert alert-danger" *ngIf="fname.touched && !fname.valid">*Enter first name</div>
+                    </div>
+                    <!-- Last name -->
+                    <div class="form-group">
+                        <label for="">Last name</label>
+                        <input ngModel #lname="ngModel" type="text" id="signuplname" class="form-control" name="lname" required>
+                        <div class="alert alert-danger" *ngIf="lname.touched && !lname.valid">*Enter last name</div>
+                    </div>
+                    <!-- email id -->
+                    <div class="form-group">
+                        <label for="signupmailid">Email Id</label>
+                        <input ngModel #email="ngModel" type="email" name="email" id="signupmailid" class="form-control"
+                            [pattern]="email_pattern" required>
+                        <div class="alert alert-danger" *ngIf="email.touched && !email.valid">*Enter email
+                            <div *ngIf="email.errors?.pattern">**Enter valid email id</div>
+                        </div>
+                    </div>
+                    <!-- user name -->
+                    <div class="form-group">
+                        <label for="">User name</label>
+                        <input ngModel #username="ngModel" type="text" id="signupusername" class="form-control" name="username" required>
+                        <div class="alert alert-danger" *ngIf="username.touched && !username.valid">*Enter user name</div>
+                    </div>
+                    <!-- Password -->
+                    <div class="form-group">
+                        <label for="signuppassword">Password</label>
+                        <input ngModel #password="ngModel" type="password" name="password" id="signuppassword" class="form-control"
+                            [pattern]="password_pattern" required>
+                        <div class="alert alert-danger" *ngIf="password.touched && !password.valid">*Enter password
+                            <div *ngIf="password.errors?.pattern">**Enter valid password</div>
+                        </div>
+                    </div>
+                    <!-- Mobile -->
+                    <div class="form-group">
+                        <label for="">Mobile</label>
+                        <input ngModel #mobile="ngModel" type="text" name="mobile" id="signupmobile" class="form-control"
+                        [pattern]="mobile_pattern" required>
+                        <div class="alert alert-danger" *ngIf="mobile.touched && !mobile.valid">*Enter mobile number
+                            <div *ngIf="mobile.errors?.pattern">**Enter valid mobile number</div>
+                        </div>
+                    </div>
+                    <!-- Gender -->
+                    <div class="form-group">
+                        <label for="">Gender</label>
+                        <div class="radio">
+                            <label for="female">Female 
+                                <input ngModel #gender="ngModel" type="radio" name="gender" id="female" value="female" required></label>
+                        </div>
+                        <div class="radio">
+                            <label for="male">Male 
+                                <input ngModel #gender="ngModel" type="radio" name="gender" id="male" value="male" required></label>
+                        </div>
+                        <div class="radio">
+                            <label for="other">Other 
+                                <input ngModel #gender="ngModel" type="radio" name="gender" id="other" value="other" required></label>
+                        </div>
+                    </div>
+                    <!-- Address -->
+                    <div class="form-group">
+                        <label for="">Adress</label>
+                        <textarea ngModel name="address" #address="ngModel" required class="form-control"
+                            cols="3" rows="1"></textarea>
+                            <div class="alert alert-danger" *ngIf="address.touched && !address.valid">*Enter address</div>
+
+                    </div>
+                    <!-- City -->
+                    <div class="form-group">
+                        <label for="">City</label>
+                        <input ngModel #city="ngModel" type="text" id="signupcity" class="form-control" name="city" required>
+                        <div class="alert alert-danger" *ngIf="city.touched && !city.valid">*Enter city name</div>
+                    </div>
+                    <br>
+                    <button class="btn btn-outline-success" [disabled]="!f.valid">SignUp</button>
+                    {{incorrect}}
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

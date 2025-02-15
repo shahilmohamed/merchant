@@ -1,0 +1,34 @@
+<div class="container-fluid">
+    <app-header></app-header>
+</div>
+<br>
+<ng-template #popUp>
+    <app-update-product [ParentData]="prodobj"></app-update-product>
+    <button (click)="modalRef.hide()" class="btn btn-danger">Cancel</button>
+</ng-template>
+<br>
+<div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <div class="d-flex justify-content-center">
+                    <div class="card myrgb" style="width: 400px;">
+                        <div class="card-body">
+                            <h4 class="card-title">{{prodobj.brand|titlecase}}</h4>
+                            <div class="card-text">
+                                <h5 *ngIf="prodobj.stock>10" style="text-align: center;"><label for="">Status:</label> &nbsp; <span class="badge badge-pill badge-success" style="padding: 10px;">In stock</span></h5>
+                                <h5 *ngIf="prodobj.stock<=10" style="text-align: center;"><label for="">Status:</label> &nbsp; <span class="badge badge-pill badge-warning" style="padding: 10px;">In stock</span></h5>
+                                <h5 *ngIf="prodobj.stock<=0" style="text-align: center;"><label for="">Status:</label> &nbsp; <span class="badge badge-pill badge-danger" style="padding: 10px;">Out of stock</span></h5>
+                                <h5 style="text-align: center;"><label for="">Category:</label> &nbsp;<span>{{prodobj.category|titlecase}}</span></h5> <br>
+                                <h5 style="text-align: center;"><label for="">Price:</label> &nbsp;<span>{{prodobj.price}}</span></h5><br>
+                                <h5 style="text-align: center;"><label for="">Stock:</label> &nbsp;<span>{{prodobj.stock}}</span></h5><br>
+                            </div>
+                            <button routerLink="/home" class="btn btn-warning">Home</button>
+                            <button class="btn btn-primary" (click)="onUpdate(popUp)">Update</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

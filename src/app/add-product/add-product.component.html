@@ -1,0 +1,36 @@
+<div class="container-fluid">
+    <app-header></app-header>
+</div>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <form #f="ngForm" (ngSubmit)="onSubmit(f)" >
+                <mat-form-field appearance="outline" class="myclass" [color]="'accent'">
+                    <mat-label>Brand Name</mat-label>
+                    <input matInput type="text" placeholder="Enter the Brand Name" #brandname="ngModel" ngModel name="bname" required>
+                    <mat-error *ngIf="brandname.touched && !brandname.valid"> ** Please enter the brand name</mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="myclass" [color]="'accent'">
+                    <mat-label>Category Name</mat-label>
+                    <input matInput type="text" placeholder="Enter the Category Name" #categoryname="ngModel" ngModel name="cname" required>
+                    <mat-error *ngIf="categoryname.touched && !categoryname.valid"> ** Please enter the category name</mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="myclass" [color]="'accent'">
+                    <mat-label>Price</mat-label>
+                    <input matInput type="number" placeholder="Enter the Price" #price="ngModel" ngModel name="pricename" min="0" required>
+                    <mat-error *ngIf="price.touched && !price.valid"> ** Please enter the price</mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="myclass" [color]="'accent'">
+                    <mat-label>Stock</mat-label>
+                    <input matInput type="number" placeholder="Enter the available Stock" #stock="ngModel" ngModel name="stockname" min="0" required>
+                    <mat-error *ngIf="stock.touched && !stock.valid"> ** Please enter the stock</mat-error>
+                </mat-form-field>
+                <button mat-raised-button color="primary" [disabled]="!f.valid">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
