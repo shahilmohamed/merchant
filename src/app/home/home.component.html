@@ -2,7 +2,7 @@
     <app-header></app-header>
     <br>
     <div>
-        <button class="btn btn-success" routerLink="/addprod">Add product</button>
+        <button class="btn btn-success" routerLink="addprod">Add product</button>
         <button class="btn btn-primary" (click)="onUpdate(popUp)">Update product</button>
         <button class="btn btn-danger"(click)="onDelete()">Delete product</button>
     </div>
@@ -26,7 +26,7 @@
                 <tr *ngFor="let item of productData | paginate:{itemsPerPage: 5, currentPage: p };index as i">
                     <td>{{i+1}}</td>
                     <td><input type="radio" name="record"(click)="onRadioclick(item)"></td>
-                    <td><a [routerLink]="['/details',item.id]">{{item.brand | titlecase}}</a></td>
+                    <td><a [routerLink]="['details',item.id]">{{item.brand | titlecase}}</a></td>
                     <td>{{item.category}}</td>
                     <td>{{item.price}}</td>
                     <td>{{item.stock}}</td>

@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit,OnDestroy {
   email_pattern = '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9]+.[a-zA-Z]{2,}$';
   password_pattern = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
   msg:any="";
+  hide=true;
   
   onSubmit(f:any)
   {
@@ -31,7 +32,7 @@ export class LoginComponent implements OnInit,OnDestroy {
     {
       if(response.msg=='Login successfully')
       {
-        this.router.navigate(['/home']);
+        this.router.navigate(['/dashboard']);
         sessionStorage.setItem("username",response.object.username);
         sessionStorage.setItem("userid",response.object.userid);
       }

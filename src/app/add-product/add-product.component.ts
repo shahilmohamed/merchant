@@ -29,7 +29,7 @@ export class AddProductComponent implements OnInit {
     }
     this.service.addProducts(this.userid,obj).subscribe((response:any)=>
     {
-      this.router.navigate(['/home']);
+      this.router.navigate(['/dashboard']);
     })
 
   }
